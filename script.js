@@ -41,10 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const circle = document.createElement('div');
             circle.className = 'circle';
             circle.dataset.day = i; // Assign day number as data attribute
-            circle.addEventListener('click', function () {
-                this.classList.toggle('completed'); // Toggle completed class on click
-                saveProgress(); // Save progress after updating completion status
-            });
             grid.appendChild(circle); // Append circle to the grid
         }
 
@@ -58,17 +54,25 @@ document.addEventListener('DOMContentLoaded', function () {
         saveProgress(); // Save progress after creating the card
     }
 
+    // Event delegation for circle click events
+    cardsContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('circle')) {
+            event.target.classList.toggle('completed'); // Toggle completed class on click
+            saveProgress(); // Save progress after updating completion status
+        }
+    });
+
     // Function to save progress to localStorage
     function saveProgress() {
         const cards = document.querySelectorAll('.tracking-card');
         const progress = [];
 
-        cards.forEach((card, cardIndex) => {
+        cards.forEach((card) => {
             const circles = card.querySelectorAll('.circle');
             const completedDays = [];
-            circles.forEach((circle, circleIndex) => {
+            circles.forEach((circle, index) => {
                 if (circle.classList.contains('completed')) {
-                    completedDays.push(circleIndex); // Push completed day index to array
+                    completedDays.push(index); // Push completed day index to array
                 }
             });
             // Push card progress (topic and completed days) to progress array

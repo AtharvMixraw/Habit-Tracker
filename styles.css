@@ -1,78 +1,54 @@
-/* styles.css */
+/* Media Queries for Responsiveness */
 
-html, body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #180101;
-    background-image: url("mygif.gif"); /* Path to your GIF */
-    background-size: cover;
-    background-repeat: repeat; /* Set to repeat to make it infinite */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    #topic-input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    #add-card-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .tracking-card {
+        padding: 15px;
+    }
+
+    .circle {
+        width: 25px;
+        height: 25px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(5, 1fr); /* Adjust to 5 columns on smaller screens */
+    }
 }
 
-.container {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    margin: auto; /* Center align container */
-}
+@media (max-width: 480px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-.controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
+    #topic-input {
+        margin: 0 0 10px 0;
+    }
 
-#topic-input {
-    padding: 10px;
-    font-size: 16px;
-    margin-right: 10px;
-}
+    #add-card-button {
+        width: 100%;
+    }
 
-#add-card-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
+    .circle {
+        width: 20px;
+        height: 20px;
+    }
 
-.tracking-card {
-    background-color: rgba(255, 228, 225, 0.7); /* Adjust alpha for transparency */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 10px;
-}
-
-.circle {
-    width: 30px;
-    height: 30px;
-    background-color: #c21818;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.circle.completed {
-    background-color: #4caf50;
-}
-
-.delete-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ff4c4c;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 16px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns on very small screens */
+    }
 }
